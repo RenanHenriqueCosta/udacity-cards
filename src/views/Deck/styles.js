@@ -8,6 +8,7 @@ export default styles = {
   },
   card:{    
     alignItems:'center',
+    justifyContent:'center',
     backgroundColor:colors.lighter,
     borderColor:colors.light,
     borderWidth:1,

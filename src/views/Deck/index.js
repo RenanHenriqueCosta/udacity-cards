@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, ProgressViewIOS } from 'react-native'
+import { Text, View, ProgressViewIOS, Easing } from 'react-native'
 import { Button, CardUse } from '../../components'
+import FlipCard from 'react-native-flip-card'
 import styles from './styles'
 
 
