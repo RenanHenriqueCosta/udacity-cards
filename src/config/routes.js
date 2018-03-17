@@ -1,6 +1,7 @@
 import React from 'react'
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import { Decks, Deck, CreateDeck } from '../views'
+import { colors } from '../styles'
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 const Tabs = TabNavigator({
@@ -17,8 +18,10 @@ const Tabs = TabNavigator({
 },
   {
     tabBarPosition:'bottom',
+    animationEnabled:true,
     tabBarOptions:{
-      showIcon:true
+      showIcon:true,
+      activeTintColor: colors.indigo
     }
   }
 )
@@ -26,6 +29,12 @@ const Tabs = TabNavigator({
 const Navigator = StackNavigator({
   Home:{ screen: Tabs, navigationOptions:{ header:null}},
   Deck:{ screen: Deck }
+},{
+  navigationOptions:{
+    headerStyle:{
+      backgroundColor:colors.lighter
+    }
+  }
 })
 
 export default Navigator

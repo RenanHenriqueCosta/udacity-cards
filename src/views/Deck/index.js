@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ProgressViewIOS } from 'react-native'
+import { Button, CardUse } from '../../components'
+import styles from './styles'
 
-export class Deck extends Component {
+
+class Deck extends Component {
+
+  static navigationOptions = () => ({
+    title:'React' 
+  })
+
   render() {
     return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
+      <CardUse>
+        <View style={styles.title}>
+          <Text style={styles.text}>{'React'}</Text>
+          <Text style={styles.subText}>{`0 cards`}</Text>
+          <Button type="cardCreation" title={'create'} press={() => console.log('quando inverno chegar')} disable={false}/>
+          <Button type="cardCreation" title={'start quiz'} press={() => console.log('quando inverno chegar')} disable={false}/>
+        </View>
+      </CardUse>
     )
   }
 }
