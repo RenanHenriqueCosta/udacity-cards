@@ -14,7 +14,6 @@ export default styles = {
     height:44,
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:colors.light
   },
   cardCreationText:{
     fontWeight:'bold',

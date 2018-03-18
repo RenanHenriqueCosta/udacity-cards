@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View, Button, FlatList } from 'react-native'
 import { Card } from '../../components'
+import { GetData } from '../../redux/action/decks'
 import styles from './styles'
 import { connect } from 'react-redux'
 
 export class Decks extends Component {
 
   componentDidMount(){
+    this.props.GetData()
   }
 
   renderList = () => (
@@ -27,7 +29,7 @@ export class Decks extends Component {
 }
 
 const mapStateToProps = state => ({
-  decks:state.decks
+  decks:Object.entries(state.decks).map(deck => deck[1])
 })
 
-export default connect(mapStateToProps)(Decks)
+export default connect(mapStateToProps, { GetData })(Decks)

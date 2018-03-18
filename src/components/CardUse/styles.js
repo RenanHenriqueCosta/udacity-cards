@@ -12,7 +12,7 @@ export default styles = {
     borderColor:colors.light,
     borderWidth:1,
     borderRadius:10,
-    paddingVertical:170,
+    paddingVertical:100,
     marginHorizontal:metrics.normal * 3,
     marginBottom:25,
     shadowColor: '#000',

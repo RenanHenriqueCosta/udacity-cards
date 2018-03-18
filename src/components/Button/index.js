@@ -16,8 +16,8 @@ export class Button extends Component {
         break;
       case 'cardCreation':
         return (
-          <TouchableOpacity onPress={() => press()} style={styles.cardCreation}>
-            <Text style={styles.cardCreationText}>{title}</Text>
+          <TouchableOpacity disabled={disable} onPress={() => press()} style={styles.cardCreation}>
+            <Text style={disable ? styles.disabled: styles.cardCreationText}>{title}</Text>
           </TouchableOpacity>
         )
         break;

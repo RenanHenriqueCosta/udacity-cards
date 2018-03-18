@@ -37,5 +37,20 @@ export default styles = {
   line:{
     borderBottomColor: 'black',
     borderBottomWidth: 1,
+  },
+  input:{
+    backgroundColor: colors.lighter,
+    height: 44,
+    width:300
+  },
+  line:{
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+  },
+  textTitleForm:{
+    fontSize:30,
+    fontWeight:'bold',
+    color:colors.darker,
+    paddingBottom:metrics.normal
   }
 }

@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Keyboard } from 'react-native'
 import { Button } from '../index'
-import styles from './styles'
 import { AddDeck } from '../../redux/action/decks'
 import { connect } from 'react-redux'
+import styles from './styles'
 
 export class CreateCard extends Component {
 
   state = {
     disable:true,
     name:''
+  }
+
+  componenDidMount(){
+    this.setState({ name: '' })
   }
 
   changeName = (name) => {
@@ -34,6 +38,7 @@ export class CreateCard extends Component {
         <View style={{ paddingHorizontal: 10}}>
           <TextInput 
             style={styles.input}
+            autoCorrect={false}
             placeholder="Add a name for your deck"
             value={this.state.name}
             onChangeText={(name) => this.changeName(name)}

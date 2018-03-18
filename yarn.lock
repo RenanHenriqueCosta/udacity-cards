@@ -4790,6 +4790,14 @@ prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 proxy-addr@~2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.3.tgz#355f262505a621646b3130a728eb647e22055341"
@@ -4966,6 +4974,10 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
+react-native-flip-card-view@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-flip-card-view/-/react-native-flip-card-view-0.0.6.tgz#8a6b17206618a0991bd76824cb323738f3a71101"
+
 react-native-flip-card@^3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.2.tgz#6563f4a6d95b999c21e82deec9b2f502175847d6"
@@ -5031,12 +5043,22 @@ react-native-scripts@1.11.1:
     rimraf "^2.6.1"
     xdl "48.0.2"
 
+react-native-simple-gesture@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-simple-gesture/-/react-native-simple-gesture-0.0.2.tgz#7ce5ba6eb59132b65effe4f33eb8a28953272d17"
+
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
   resolved "https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz#0c6e373dbe63cfcbdd465f5b2965ebe011c8962f"
   dependencies:
     color "^2.0.1"
     lodash "^4.16.6"
+
+react-native-swipe-flip@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-swipe-flip/-/react-native-swipe-flip-1.0.2.tgz#241441681fa24f57bd33647ecb8b4242aba48e45"
+  dependencies:
+    react-native-simple-gesture "0.0.2"
 
 react-native-tab-view@^0.0.74:
   version "0.0.74"

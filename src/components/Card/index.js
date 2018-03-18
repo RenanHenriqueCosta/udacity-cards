@@ -4,13 +4,13 @@ import styles from './styles'
 
 export class Card extends Component {
   render() {
-    const { title, text, navigate } = this.props
+    const { title, text, navigate, questions } = this.props
     return (
-      <TouchableOpacity onPress={() => navigate('Deck')} style={styles.card}>
+      <TouchableOpacity onPress={() => navigate('Deck', { deck: this.props })} style={styles.card}>
         <View style={{ justifyContent:'center', alignItems:'center'}}>
           <View style={styles.title}>
             <Text style={styles.text}>{this.props.title}</Text>
-            <Text style={styles.subText}>{`0 cards`}</Text>
+            <Text style={styles.subText}>{ questions.length > 0 ? `${questions.length} cards` : `0 cards` }</Text>
           </View>
         </View>
       </TouchableOpacity>
