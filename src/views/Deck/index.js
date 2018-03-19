@@ -45,7 +45,7 @@ class Deck extends Component {
         <Text style={styles.subText}>{`${props.questions.length} cards`}</Text>
         <Button type="cardCreation" title={'create'} press={() => this.flip()} disable={false}/>
         {props.questions.length > 0
-          ? <Button type="cardCreation" title={'start quiz'} press={() => console.log('quando inverno chegar')} disable={false}/>
+          ? <Button type="cardCreation" title={'start quiz'} press={() => this.props.navigation.navigate('Quiz', { currentDeck: props.title })} disable={false}/>
           : null
         }
       </View>

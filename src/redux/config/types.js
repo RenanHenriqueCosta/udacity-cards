@@ -2,6 +2,7 @@ const types = {
   GET_DECK:'GET_DECK',
   ADD_DECK:'ADD_DECK',
   ADD_QUESTION:'ADD_QUESTION',
+  GET_CURRENT_DECK:'GET_CURRENT_DECK',
 }
 
 export default types

@@ -4,10 +4,8 @@ import styles from './styles'
 
 const CardUse = (props) => {
   return(
-    <View style={styles.container}>
-      <View style={styles.card}>
-        {props.children}
-      </View>
+    <View style={styles.card}>
+      {props.children}
     </View>
   )
 }
