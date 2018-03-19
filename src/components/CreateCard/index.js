@@ -35,7 +35,7 @@ export class CreateCard extends Component {
           <Text style={styles.text}>New deck</Text>
           <View style={styles.line} />
         </View>
-        <View style={{ paddingHorizontal: 10}}>
+        <View style={styles.cardMagin}>
           <TextInput 
             style={styles.input}
             autoCorrect={false}

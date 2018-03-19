@@ -5,7 +5,7 @@ import { Button } from '../../components'
 import { connect } from 'react-redux' 
 import { CardUse } from '../../components'
 import FlipView from 'react-native-flip-view'
-import style from './styles'
+import styles from './styles'
 
 export class Quiz extends Component {
 
@@ -18,7 +18,7 @@ export class Quiz extends Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-      title: `${navigation.state.routeName}`
+      title: `${navigation.state.routeName} - ${navigation.state.params.currentDeck}`
   })
 
   renderProgress = (os) => (
@@ -26,7 +26,7 @@ export class Quiz extends Component {
       {os === 'ios' ? (
         <ProgressViewIOS progressTintColor={colors.indigo} progress={this.state.progress/this.props.deck.questions.length} style={styles.progress}/>
       ):(
-        <Text>Android</Text>
+        <ProgressBarAndroid style={styles.progress} progress={this.state.progress/this.props.deck.questions.length} />
       )}
     </View>
   )
@@ -34,12 +34,12 @@ export class Quiz extends Component {
   renderFront = (props) => (
     <View style={styles.container}> 
       <CardUse>
-        <View style={{ height: Dimensions.get('window').height/2, alignItems:'center', justifyContent:'center'}}>
+        <View style={styles.card}>
           <Text style={styles.text}>{`${props.question}`}</Text>
         </View>
           <Button title="view answer" press={() => this.flip()} />
       </CardUse>
-      <View style={{alignSelf:'center'}}>
+      <View style={styles.progressLocation}>
         {this.renderProgress(Platform.OS)}
       </View>
     </View>
@@ -48,15 +48,15 @@ export class Quiz extends Component {
   renderBack = (props) => (
     <View style={styles.container}>
       <CardUse>
-        <View style={{ height: Dimensions.get('window').height/2, alignItems:'center', justifyContent:'center'}}>
+        <View style={styles.card}>
           <Text style={styles.text}>{`${props.answer}`}</Text>
         </View>
-        <View style={{ flexDirection:'row', width: Dimensions.get('window').width - 30, justifyContent:'space-around'}}>
-          <Button style={styles.buttonsSpace} title="correct" press={() => this.saveAnswer('correct')} />
-          <Button style={styles.buttonsSpace} title="incorrect" press={() => this.saveAnswer('incorrect')} />
+        <View style={styles.buttonsSpace}>
+          <Button title="correct" press={() => this.saveAnswer('correct')} />
+          <Button title="incorrect" press={() => this.saveAnswer('incorrect')} />
         </View>
       </CardUse>
-      <View style={{alignSelf:'center'}}>
+      <View style={styles.progressLocation}>
         {this.renderProgress(Platform.OS)}
       </View>
     </View>
@@ -65,13 +65,13 @@ export class Quiz extends Component {
   renderFinal = () => (
     <View style={styles.container}> 
       <CardUse>
-        <View style={{ height: Dimensions.get('window').height/2, alignItems:'center', justifyContent:'center'}}>
+        <View style={styles.card}>
           <Text style={styles.text}>{`Parabéns`}</Text>
-          <Text style={styles.text}>{`Você conseguiu acertar ${(this.state.percentual/this.props.deck.questions.length * 100)}% das questões`}</Text>
+          <Text style={styles.subText}>{`Você conseguiu acertar ${((this.state.percentual/this.props.deck.questions.length * 100).toFixed())}% das questões`}</Text>
         </View>
-        <Button style={styles.buttonsSpace} title="back to cards" press={() => this.props.navigation.navigate('Home')} />
+        <Button title="back to cards" press={() => this.props.navigation.navigate('Home')} />
       </CardUse>
-      <View style={{alignSelf:'center'}}>
+      <View style={styles.progressLocation}>
         {this.renderProgress(Platform.OS)}
       </View>
     </View>
@@ -100,7 +100,7 @@ export class Quiz extends Component {
     const { questions } = this.props.deck 
     return(
       <FlipView 
-        style={{flex:1}}
+        style={styles.flipCard}
         front={this.state.currentView === 'flip' ? this.renderFront(questions[this.state.question]) : this.renderFinal()}
         back={this.renderBack(questions[this.state.question])}
         isFlipped={this.state.isFlipped}

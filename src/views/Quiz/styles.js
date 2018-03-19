@@ -8,16 +8,34 @@ export default styles = {
     alignSelf:'center', 
     width:Dimensions.get('window').width - 30, 
   },
+  flipCard:{
+    flex:1,
+  },
+  card:{
+    height: Dimensions.get('window').height/2, 
+    alignItems:'center', 
+    justifyContent:'center'
+  },
   progress:{
     width:Dimensions.get('window').width - 30,
     marginTop:25,
   },
+  progressLocation:{
+    alignSelf:'center'
+  },
   buttonsSpace:{
-    marginHorizontal:10
+    flexDirection:'row', 
+    width: Dimensions.get('window').width - 30, 
+    justifyContent:'space-around'
   },
   text:{
     fontSize:30,
     fontWeight:'bold',
     color:colors.darker
+  },
+  subText:{
+    fontSize:26,
+    fontWeight:'bold',
+    color:colors.gray
   },
 }

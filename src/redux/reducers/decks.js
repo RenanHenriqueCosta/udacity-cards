@@ -1,11 +1,13 @@
 import types from '../config/types'
+import { getState, setState } from '../../utils/storage'
+import { AsyncStorage } from 'react-native' 
 
 const INITIAL_STATE = {
   React: { title:'React', questions:[ { question: 'What is React?', answer: 'A library for managing user interfaces' }, { question: 'What is Angular?', answer: 'A framework for managing user interfaces' }] },
   Node: { title:'Node', questions:[] },
 }
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE , action) => {
   switch(action.type){
     case types.GET_DECK:
       return { ...state }

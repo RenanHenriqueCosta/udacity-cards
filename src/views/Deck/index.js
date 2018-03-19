@@ -88,7 +88,7 @@ class Deck extends Component {
   render() {
     const { deck } = this.props.navigation.state.params
     return (
-      <FlipView style={{flex: 1}}
+      <FlipView style={styles.flipCard}
         front={this.renderFront(deck)}
         back={this.renderBack(deck)}
         isFlipped={this.state.isFlipped}

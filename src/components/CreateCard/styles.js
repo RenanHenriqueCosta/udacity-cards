@@ -24,6 +24,9 @@ export default styles = {
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
+  cardMagin:{
+    paddingHorizontal: 10
+  },
   input:{
     backgroundColor: colors.lighter,
     height: 44,
