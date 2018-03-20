@@ -9,5 +9,9 @@ export default {
   dark: '#666',
   darker: '#333',
   black: '#000',
-  gray: '#929292'
+  gray: '#929292',
+  blue:'#3498db',
+  green:'#27ae60',
+  red:'#c0392b',
+  dark_grey:'#bdc3c7'
 }

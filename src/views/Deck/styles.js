@@ -1,7 +1,15 @@
 import { colors, metrics } from '../../styles/index'
+import { Dimensions } from 'react-native'
 
 export default styles = {
- text:{
+  container:{
+    flex: 1, 
+    justifyContent:'center', 
+    alignSelf:'center', 
+    width:Dimensions.get('window').width - 30,
+    backgroundColor:colors.lighter
+  },
+  text:{
     fontSize:30,
     fontWeight:'bold',
     color:colors.darker
@@ -13,6 +21,7 @@ export default styles = {
   },
   title:{
     alignItems:'center',
+    marginVertical:45
   },
   flipCard:{
     flex:1,

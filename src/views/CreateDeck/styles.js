@@ -1,11 +1,12 @@
 import { colors, metrics } from '../../styles/index'
+import { Dimensions } from 'react-native'
 
 export default styles = {
-  card:{
-    flex:1,
-    justifyContent:'center',
-    alingItens:'center',
-    marginBottom:30,
+  container:{
+    flex: 1, 
+    justifyContent:'center', 
+    alignSelf:'center', 
+    width:Dimensions.get('window').width - 30,
     backgroundColor:colors.lighter
-  }
+  },
 }

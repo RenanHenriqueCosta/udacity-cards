@@ -21,6 +21,34 @@ export class Button extends Component {
           </TouchableOpacity>
         )
         break;
+      case 'quiz':
+        return (
+          <TouchableOpacity disabled={disable} onPress={() => press()} style={styles.cardQuiz}>
+            <Text style={disable ? styles.disabled: styles.cardCreationQuiz}>{title}</Text>
+          </TouchableOpacity>
+        )
+        break;
+      case 'correct':
+        return (
+          <TouchableOpacity disabled={disable} onPress={() => press()} style={styles.cardCorrect}>
+            <Text style={disable ? styles.disabled: styles.cardCreationCorrect}>{title}</Text>
+          </TouchableOpacity>
+        )
+        break;
+      case 'incorrect':
+        return (
+          <TouchableOpacity disabled={disable} onPress={() => press()} style={styles.cardIncorrect}>
+            <Text style={disable ? styles.disabled: styles.cardCreationIncorrect}>{title}</Text>
+          </TouchableOpacity>
+        )
+        break;
+      case 'view':
+        return (
+          <TouchableOpacity disabled={disable} onPress={() => press()} style={styles.cardView}>
+            <Text style={disable ? styles.disabled: styles.cardCreationView}>{title}</Text>
+          </TouchableOpacity>
+        )
+        break;
       default:
         return (
           <TouchableOpacity disabled={disable} onPress={() => press()} style={styles.currentCard}>

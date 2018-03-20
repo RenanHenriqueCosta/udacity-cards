@@ -8,7 +8,7 @@ export class CreateDeck extends Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <View style={styles.card}>
+      <View style={styles.container}>
         <CreateCard navigate={navigate}/>
       </View>
     )

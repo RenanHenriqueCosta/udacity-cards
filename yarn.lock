@@ -3534,7 +3534,7 @@ json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -3686,6 +3686,10 @@ locate-path@^2.0.0:
 lock@^0.1.2, lock@~0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/lock/-/lock-0.1.4.tgz#fec7deaef17e7c3a0a55e1da042803e25d91745d"
+
+lodash-es@^4.17.4:
+  version "4.17.7"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.7.tgz#db240a3252c3dd8360201ac9feef91ac977ea856"
 
 lodash-es@^4.17.5, lodash-es@^4.2.1:
   version "4.17.5"
@@ -4974,20 +4978,6 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
-react-native-flip-card-view@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-flip-card-view/-/react-native-flip-card-view-0.0.6.tgz#8a6b17206618a0991bd76824cb323738f3a71101"
-
-react-native-flip-card@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.2.tgz#6563f4a6d95b999c21e82deec9b2f502175847d6"
-  dependencies:
-    prop-types "^15.5.10"
-
-react-native-flip-view@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-flip-view/-/react-native-flip-view-1.0.5.tgz#6f18ac4da021d0672c8531676c8cb08ef4f36915"
-
 react-native-gesture-handler@1.0.0-alpha.39:
   version "1.0.0-alpha.39"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.0-alpha.39.tgz#e87851d5efc49d2d91ebf76ad59b7b5d1fd356f5"
@@ -5043,22 +5033,12 @@ react-native-scripts@1.11.1:
     rimraf "^2.6.1"
     xdl "48.0.2"
 
-react-native-simple-gesture@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-simple-gesture/-/react-native-simple-gesture-0.0.2.tgz#7ce5ba6eb59132b65effe4f33eb8a28953272d17"
-
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
   resolved "https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz#0c6e373dbe63cfcbdd465f5b2965ebe011c8962f"
   dependencies:
     color "^2.0.1"
     lodash "^4.16.6"
-
-react-native-swipe-flip@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-swipe-flip/-/react-native-swipe-flip-1.0.2.tgz#241441681fa24f57bd33647ecb8b4242aba48e45"
-  dependencies:
-    react-native-simple-gesture "0.0.2"
 
 react-native-tab-view@^0.0.74:
   version "0.0.74"
@@ -5276,6 +5256,14 @@ redux-logger@^2.7.4:
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-2.10.2.tgz#3c5a5f0a6f32577c1deadf6655f257f82c6c3937"
   dependencies:
     deep-diff "0.3.4"
+
+redux-persist@4.10.2:
+  version "4.10.2"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.10.2.tgz#8efdb16cfe882c521a78a6d0bfdfef2437f49f96"
+  dependencies:
+    json-stringify-safe "^5.0.1"
+    lodash "^4.17.4"
+    lodash-es "^4.17.4"
 
 redux-promise@^0.5.3:
   version "0.5.3"

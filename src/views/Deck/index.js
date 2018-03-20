@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View, Easing, TextInput, KeyboardAvoidingView } from 'react-native'
-import { Button, CardUse } from '../../components'
+import { Button, CardUse, FlipView } from '../../components'
 import { connect } from 'react-redux'
 import { AddQuestion } from '../../redux/action/decks'
-import FlipView from 'react-native-flip-view'
 import styles from './styles'
 
 class Deck extends Component {
@@ -39,22 +38,24 @@ class Deck extends Component {
   }
 
   renderFront = (props) => (
-    <CardUse>
-      <View style={styles.title}>
-        <Text style={styles.text}>{props.title}</Text>
-        <Text style={styles.subText}>{`${props.questions.length} cards`}</Text>
-        <Button type="cardCreation" title={'create'} press={() => this.flip()} disable={false}/>
-        {props.questions.length > 0
-          ? <Button type="cardCreation" title={'start quiz'} press={() => this.props.navigation.navigate('Quiz', { currentDeck: props.title })} disable={false}/>
-          : null
-        }
-      </View>
-    </CardUse>
+    <View style={styles.container}>
+      <CardUse>
+        <View style={styles.title}>
+          <Text style={styles.text}>{props.title}</Text>
+          <Text style={styles.subText}>{`${props.questions.length} cards`}</Text>
+          <Button type="cardCreation" title={'create'} press={() => this.flip()} disable={false}/>
+          {props.questions.length > 0
+            ? <Button type="quiz" title={'start quiz'} press={() => this.props.navigation.navigate('Quiz', { currentDeck: props.title })} disable={false}/>
+            : null
+          }
+        </View>
+      </CardUse>
+    </View>
   )
 
   renderBack = (props) => (
-    <CardUse>
-      <View style={{ marginBottom: 120}}> 
+    <View style={styles.container}>
+      <CardUse>
         <View style={styles.title}>
           <Text style={styles.textTitleForm}>{props.title}</Text>
           <View>
@@ -77,8 +78,8 @@ class Deck extends Component {
           </View>
           <Button type="cardCreation" title={'create'} press={() => this.saveQuestion(props.title)} disable={this.state.disable}/>
         </View>
-      </View>
-    </CardUse>
+      </CardUse>
+    </View>
   )
 
   flip = () => {

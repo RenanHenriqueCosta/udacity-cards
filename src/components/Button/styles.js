@@ -20,6 +20,46 @@ export default styles = {
     fontSize:30,
     color:colors.indigo,
   },
+  cardQuiz:{
+    height:44,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  cardCreationQuiz:{
+    fontWeight:'bold',
+    fontSize:30,
+    color:colors.blue,
+  },
+  cardCorrect:{
+    height:44,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  cardCreationCorrect:{
+    fontWeight:'bold',
+    fontSize:30,
+    color:colors.green,
+  },
+  cardIncorrect:{
+    height:44,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  cardCreationIncorrect:{
+    fontWeight:'bold',
+    fontSize:30,
+    color:colors.red,
+  },
+  cardView:{
+    height:44,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  cardCreationView:{
+    fontWeight:'bold',
+    fontSize:30,
+    color:colors.dark_grey,
+  },
   text:{
     fontWeight:'bold',
     fontSize:30,

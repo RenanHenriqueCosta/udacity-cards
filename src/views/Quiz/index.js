@@ -3,8 +3,7 @@ import { Text, View, Easing, Platform, ProgressViewIOS, ProgressBarAndroid, Dime
 import { colors } from '../../styles'
 import { Button } from '../../components'
 import { connect } from 'react-redux' 
-import { CardUse } from '../../components'
-import FlipView from 'react-native-flip-view'
+import { CardUse, FlipView } from '../../components'
 import styles from './styles'
 
 export class Quiz extends Component {
@@ -14,7 +13,8 @@ export class Quiz extends Component {
     currentView:'flip',
     question:0,
     progress:0,
-    percentual:0
+    percentual:0,
+    numberCards:1
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -24,7 +24,12 @@ export class Quiz extends Component {
   renderProgress = (os) => (
     <View>
       {os === 'ios' ? (
-        <ProgressViewIOS progressTintColor={colors.indigo} progress={this.state.progress/this.props.deck.questions.length} style={styles.progress}/>
+        <View>
+          <ProgressViewIOS progressTintColor={colors.indigo} progress={this.state.progress/this.props.deck.questions.length} style={styles.progress}/>
+          <View style={styles.numberCardsView}>
+            <Text style={styles.numberCardsText}>{`${this.state.numberCards}/${this.props.deck.questions.length}`}</Text>
+          </View>
+        </View>
       ):(
         <ProgressBarAndroid style={styles.progress} progress={this.state.progress/this.props.deck.questions.length} />
       )}
@@ -37,7 +42,7 @@ export class Quiz extends Component {
         <View style={styles.card}>
           <Text style={styles.text}>{`${props.question}`}</Text>
         </View>
-          <Button title="view answer" press={() => this.flip()} />
+          <Button title="view answer" type="view" press={() => this.flip()} />
       </CardUse>
       <View style={styles.progressLocation}>
         {this.renderProgress(Platform.OS)}
@@ -49,11 +54,11 @@ export class Quiz extends Component {
     <View style={styles.container}>
       <CardUse>
         <View style={styles.card}>
-          <Text style={styles.text}>{`${props.answer}`}</Text>
+          <Text style={styles.subText}>{`${props.answer}`}</Text>
         </View>
         <View style={styles.buttonsSpace}>
-          <Button title="correct" press={() => this.saveAnswer('correct')} />
-          <Button title="incorrect" press={() => this.saveAnswer('incorrect')} />
+          <Button title="correct" type="correct" press={() => this.saveAnswer('correct')} />
+          <Button title="incorrect" type="incorrect" press={() => this.saveAnswer('incorrect')} />
         </View>
       </CardUse>
       <View style={styles.progressLocation}>
@@ -69,7 +74,7 @@ export class Quiz extends Component {
           <Text style={styles.text}>{`Parabéns`}</Text>
           <Text style={styles.subText}>{`Você conseguiu acertar ${((this.state.percentual/this.props.deck.questions.length * 100).toFixed())}% das questões`}</Text>
         </View>
-        <Button title="back to cards" press={() => this.props.navigation.navigate('Home')} />
+        <Button title="back to cards" type="view" press={() => this.props.navigation.navigate('Home')} />
       </CardUse>
       <View style={styles.progressLocation}>
         {this.renderProgress(Platform.OS)}
@@ -88,6 +93,7 @@ export class Quiz extends Component {
   saveAnswer = (answer) => {
     this.setState({ progress: this.state.progress += 1})
     answer === 'correct' ? this.setState({ percentual: this.state.percentual += 1}) : null
+    this.state.numberCards < this.props.deck.questions.length ? this.setState({ numberCards: this.state.numberCards += 1}) : null
     this.redirectView()
     this.flip()
   }

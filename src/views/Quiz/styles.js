@@ -31,11 +31,25 @@ export default styles = {
   text:{
     fontSize:30,
     fontWeight:'bold',
-    color:colors.darker
+    color:colors.darker,
+    textAlign:'center'
   },
   subText:{
     fontSize:26,
     fontWeight:'bold',
-    color:colors.gray
+    color:colors.gray,
+    marginHorizontal:5,
+    textAlign:'center'
   },
+  numberCardsView:{
+    marginTop:20,
+    textAlign:'center',
+    alignItems:'center'
+  },
+  numberCardsText:{
+    fontSize:26,
+    fontWeight:'bold',
+    color:colors.gray,
+  }
+
 }
