@@ -1,6 +1,4 @@
 import types from '../config/types'
-import { getState, setState } from '../../utils/storage'
-import { AsyncStorage } from 'react-native' 
 
 const INITIAL_STATE = {
   React: { title:'React', questions:[ { question: 'What is React?', answer: 'A library for managing user interfaces' }, { question: 'What is Angular?', answer: 'A framework for managing user interfaces' }] },

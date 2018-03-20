@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Text, View, Easing, Platform, ProgressViewIOS, ProgressBarAndroid, Dimensions } from 'react-native'
 import { colors } from '../../styles'
 import { Button } from '../../components'
-import { connect } from 'react-redux' 
 import { CardUse, FlipView } from '../../components'
 import styles from './styles'
+import { connect } from 'react-redux' 
 
 export class Quiz extends Component {
 
@@ -21,69 +21,86 @@ export class Quiz extends Component {
       title: `${navigation.state.routeName} - ${navigation.state.params.currentDeck}`
   })
 
-  renderProgress = (os) => (
-    <View>
-      {os === 'ios' ? (
-        <View>
-          <ProgressViewIOS progressTintColor={colors.indigo} progress={this.state.progress/this.props.deck.questions.length} style={styles.progress}/>
-          <View style={styles.numberCardsView}>
-            <Text style={styles.numberCardsText}>{`${this.state.numberCards}/${this.props.deck.questions.length}`}</Text>
+  renderProgress = (os) => {
+    const { progress, numberCards } = this.state
+    const { deck } = this.props
+    return(
+      <View>
+        {os === 'ios' ? (
+          <View>
+            <ProgressViewIOS progressTintColor={colors.indigo} progress={progress/deck.questions.length} style={styles.progress}/>
+            <View style={styles.numberCardsView}>
+              <Text style={styles.numberCardsText}>{`${numberCards}/${deck.questions.length}`}</Text>
+            </View>
           </View>
-        </View>
-      ):(
-        <ProgressBarAndroid style={styles.progress} progress={this.state.progress/this.props.deck.questions.length} />
-      )}
-    </View>
-  )
-
-  renderFront = (props) => (
-    <View style={styles.container}> 
-      <CardUse>
-        <View style={styles.card}>
-          <Text style={styles.text}>{`${props.question}`}</Text>
-        </View>
-          <Button title="view answer" type="view" press={() => this.flip()} />
-      </CardUse>
-      <View style={styles.progressLocation}>
-        {this.renderProgress(Platform.OS)}
+        ):(
+          <ProgressBarAndroid style={styles.progress} progress={progress/deck.questions.length} />
+        )}
       </View>
-    </View>
-  )
+    )
+  }
 
-  renderBack = (props) => (
-    <View style={styles.container}>
-      <CardUse>
-        <View style={styles.card}>
-          <Text style={styles.subText}>{`${props.answer}`}</Text>
+  renderFront = (props) => {
+    const { question } = props
+    return(
+      <View style={styles.container}> 
+        <CardUse>
+          <View style={styles.card}>
+            <Text style={styles.text}>{`${question}`}</Text>
+          </View>
+            <Button title="view answer" type="view" press={() => this.flip()} />
+        </CardUse>
+        <View style={styles.progressLocation}>
+          {this.renderProgress(Platform.OS)}
         </View>
-        <View style={styles.buttonsSpace}>
-          <Button title="correct" type="correct" press={() => this.saveAnswer('correct')} />
-          <Button title="incorrect" type="incorrect" press={() => this.saveAnswer('incorrect')} />
-        </View>
-      </CardUse>
-      <View style={styles.progressLocation}>
-        {this.renderProgress(Platform.OS)}
       </View>
-    </View>
-  )
+    )
+  }
 
-  renderFinal = () => (
-    <View style={styles.container}> 
-      <CardUse>
-        <View style={styles.card}>
-          <Text style={styles.text}>{`Parabéns`}</Text>
-          <Text style={styles.subText}>{`Você conseguiu acertar ${((this.state.percentual/this.props.deck.questions.length * 100).toFixed())}% das questões`}</Text>
+  renderBack = (props) => {
+    const { question } = props
+    return(
+      <View style={styles.container}>
+        <CardUse>
+          <View style={styles.card}>
+            <Text style={styles.subText}>{`${props.answer}`}</Text>
+          </View>
+          <View style={styles.buttonsSpace}>
+            <Button title="correct" type="correct" press={() => this.saveAnswer('correct')} />
+            <Button title="incorrect" type="incorrect" press={() => this.saveAnswer('incorrect')} />
+          </View>
+        </CardUse>
+        <View style={styles.progressLocation}>
+          {this.renderProgress(Platform.OS)}
         </View>
-        <Button title="back to cards" type="view" press={() => this.props.navigation.navigate('Home')} />
-      </CardUse>
-      <View style={styles.progressLocation}>
-        {this.renderProgress(Platform.OS)}
       </View>
-    </View>
-  )
+    )
+  }
+  
+
+  renderFinal = () => {
+    const { percentual } = this.state
+    const { deck, navigation } = this.props
+    return(
+      <View style={styles.container}> 
+        <CardUse>
+          <View style={styles.card}>
+            <Text style={styles.text}>{`Parabéns`}</Text>
+            <Text style={styles.subText}>{`Você conseguiu acertar ${((percentual/deck.questions.length * 100).toFixed())}% das questões`}</Text>
+          </View>
+          <Button title="back to cards" type="view" press={() => navigation.navigate('Home')} />
+        </CardUse>
+        <View style={styles.progressLocation}>
+          {this.renderProgress(Platform.OS)}
+        </View>
+      </View>
+    )
+  }
 
   redirectView = () => {
-    if(this.props.deck.questions.length - 1 > this.state.question){
+    const { question } = this.state
+    const { deck } = this.props
+    if(deck.questions.length - 1 > question){
       this.setState({ question: this.state.question += 1 })
     } else {
       this.setState({ currentView:'final'})
@@ -91,9 +108,11 @@ export class Quiz extends Component {
   }
 
   saveAnswer = (answer) => {
+    const { progress, percentual, numberCards } = this.state
+    const { deck } = this.props
     this.setState({ progress: this.state.progress += 1})
     answer === 'correct' ? this.setState({ percentual: this.state.percentual += 1}) : null
-    this.state.numberCards < this.props.deck.questions.length ? this.setState({ numberCards: this.state.numberCards += 1}) : null
+    numberCards < deck.questions.length ? this.setState({ numberCards: this.state.numberCards += 1}) : null
     this.redirectView()
     this.flip()
   }

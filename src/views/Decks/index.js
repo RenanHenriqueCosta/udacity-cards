@@ -3,12 +3,15 @@ import { Text, View, Button, FlatList } from 'react-native'
 import { Card } from '../../components'
 import { GetData } from '../../redux/action/decks'
 import styles from './styles'
+import { clearLocalNotification, setLocalNotification } from '../../utils/notifications'
 import { connect } from 'react-redux'
 
 export class Decks extends Component {
 
   componentDidMount(){
     this.props.GetData()
+    clearLocalNotification()
+     .then(setLocalNotification())
   }
 
   renderList = () => (

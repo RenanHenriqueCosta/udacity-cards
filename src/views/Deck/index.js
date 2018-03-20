@@ -15,7 +15,7 @@ class Deck extends Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: `${navigation.state.params.deck.title}`
+    title: navigation.state.params.deck.title
   })
 
   changeQuestion = (question) => {
