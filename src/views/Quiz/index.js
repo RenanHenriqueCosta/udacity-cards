@@ -21,6 +21,17 @@ export class Quiz extends Component {
       title: `${navigation.state.routeName} - ${navigation.state.params.currentDeck}`
   })
 
+  restartQuiz = () => {
+    this.setState({
+      isFlipped:false,
+      currentView:'flip',
+      question:0,
+      progress:0,
+      percentual:0,
+      numberCards:1
+    })
+  }
+
   renderProgress = (os) => {
     const { progress, numberCards } = this.state
     const { deck } = this.props
@@ -88,6 +99,7 @@ export class Quiz extends Component {
             <Text style={styles.text}>{`Parabéns`}</Text>
             <Text style={styles.subText}>{`Você conseguiu acertar ${((percentual/deck.questions.length * 100).toFixed())}% das questões`}</Text>
           </View>
+          <Button title="Restart quiz" type="view" press={() => this.restartQuiz()} />
           <Button title="back to cards" type="view" press={() => navigation.navigate('Home')} />
         </CardUse>
         <View style={styles.progressLocation}>

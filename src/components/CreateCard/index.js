@@ -22,10 +22,11 @@ export class CreateCard extends Component {
   }
 
   saveDeck = (name) => {
+    const obj = { title: name, questions:[] }
     this.props.AddDeck(name)
     Keyboard.dismiss()
     this.setState({ name: ''})
-    this.props.navigate('Home')
+    this.props.navigate('Deck', { deck: obj })
   }
 
   render() {

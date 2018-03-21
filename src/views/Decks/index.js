@@ -11,7 +11,7 @@ export class Decks extends Component {
   componentDidMount(){
     this.props.GetData()
     clearLocalNotification()
-     .then(setLocalNotification())
+     .then(setLocalNotification)
   }
 
   renderList = () => (

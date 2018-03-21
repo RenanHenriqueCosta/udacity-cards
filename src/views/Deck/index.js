@@ -3,6 +3,7 @@ import { Text, View, Easing, TextInput, KeyboardAvoidingView } from 'react-nativ
 import { Button, CardUse, FlipView } from '../../components'
 import { connect } from 'react-redux'
 import { AddQuestion } from '../../redux/action/decks'
+import { NavigationActions } from 'react-navigation'
 import styles from './styles'
 
 class Deck extends Component {
@@ -14,9 +15,18 @@ class Deck extends Component {
     disable:true
   }
 
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.deck.title
-  })
+  static navigationOptions = ({ navigation }) => {
+    if(navigation.state.params.deck.questions.length == 0){
+      return {
+        title: navigation.state.params.deck.title,
+        header:null
+      }
+    } else {
+      return {
+        title: navigation.state.params.deck.title,
+      }
+    }
+  } 
 
   changeQuestion = (question) => {
     this.setState({ question })
@@ -46,7 +56,7 @@ class Deck extends Component {
           <Button type="cardCreation" title={'create'} press={() => this.flip()} disable={false}/>
           {props.questions.length > 0
             ? <Button type="quiz" title={'start quiz'} press={() => this.props.navigation.navigate('Quiz', { currentDeck: props.title })} disable={false}/>
-            : null
+            : <Button type="view" title={'back to decks'} press={() => this.props.navigation.navigate('Home')} disable={false}/>
           }
         </View>
       </CardUse>
